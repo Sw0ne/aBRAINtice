@@ -1,0 +1,119 @@
+﻿<Window x:Class="aBRAINtice.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aBRAINtice"
+        mc:Ignorable="d"
+        Height="600" Width="900" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" Background="#FF6C6C6C">
+
+    <!-- GROSSES GRID / KOMPLETTES FENSTER -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="650"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="525"/>
+        </Grid.RowDefinitions>
+
+        <!-- GRID 1: TASKLEISTE -->
+        <Grid x:Name="Grid1" Background="#FF464646" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="White" Text="A[Brain]tice"/>
+            <Button x:Name="ButtonExit" Width="25" Height="25" Margin="0,0,10,0" Background="#FF00C763" Click="ButtonExit_Click" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="❌" FontSize="17" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <!-- GRID 2: DATUM -->
+        <Grid x:Name="Grid2" Grid.Row="1" Background="#FF6C6C6C" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="169*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="DatumBox" Text="{Binding DatumBoxText}" Width="400" Height="40" TextAlignment="Center" FontSize="18" Foreground="White" Background="Transparent" Padding="7" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Column="1" Margin="195,0,250,0"/>
+        </Grid>
+
+        <!-- GRID 3: LISTE -->
+        <Grid x:Name="Grid3" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                <TextBlock Height="35" Width="640"  VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="#FF464646" FontSize="20" Foreground="White" Text="Meine Wochenberichte" Padding="5,4,0,4"/>
+                <DataGrid Height="480" Width="640"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- GRID 4: BUTTONS / OPTIONEN -->
+        <Grid x:Name="Grid4" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="#FF6C6C6C">
+            <Button x:Name="ButtonBerichtNeu" Height="50" Margin="10,0,10,0" Background="#FF464646" HorizontalAlignment="Stretch" VerticalAlignment="Top" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonBerichtNeu_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Neuer Wochenbericht" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="ButtonBearbeiten" Height="50" Margin="10,60,10,0" Background="#FF464646" HorizontalAlignment="Stretch" VerticalAlignment="Top" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonBearbeiten_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bearbeiten" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="ButtonBerichtPdf" Height="50" Margin="10,120,10,0" Background="#FF464646" HorizontalAlignment="Stretch" VerticalAlignment="Top" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonBerichtPdf_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="PDF generieren" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="ButtonChangeSpeicherort" Height="30" Margin="10,0,10,50" Background="#FFFFD33E" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonChangeSpeicherort_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Speicherort ändern" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="ButtonDeleteBericht" Height="30" Margin="10,0,10,130" Background="#FFFB7997" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonDeleteBericht_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Wochenbericht löschen" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="ButtonDeleteNotiz" Height="30" Margin="10,0,10,90" Background="#FFFB7997" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonDeleteNotiz_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Notiz löschen" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+            <Button x:Name="ButtonMenu" Height="30" Margin="10,0,10,10" Background="#FF00C763" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" BorderThickness="0" BorderBrush="#FF00C763" Click="ButtonMenu_Click">
+                <TextBlock Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Hauptmenü" FontSize="20" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
+

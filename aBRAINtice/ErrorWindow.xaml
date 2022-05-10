@@ -1,0 +1,42 @@
+﻿<Window x:Class="aBRAINtice.ErrorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aBRAINtice"
+        mc:Ignorable="d"
+        Title="ErrorWindow" Height="200" Width="300" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" Background="#FF6C6C6C">
+
+    <!-- GROSSES GRID / KOMPLETTES FENSTER -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- GRID 1:  TASKLEISTE -->
+        <Grid x:Name="GridTaskLeiste" Background="#FF464646" Grid.Row="0">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="White" Text="A[Brain]tice"/>
+            <Button x:Name="ButtonExit" Width="25" Height="25" Margin="0,0,10,0" Background="#FF00C763" Click="ButtonExit_Click" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="❌" FontSize="17" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <!-- GRID 2: FEHLERMELDUNG -->
+        <Grid Background="#FF6C6C6C" Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Width="250" Height="30" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" Foreground="White" Margin="0,20,0,0" Text="FEHLER"/>
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Width="250" Height="95" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" Foreground="#FFFB7997" Text="Hier Binding" Margin="25,10,25,10"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

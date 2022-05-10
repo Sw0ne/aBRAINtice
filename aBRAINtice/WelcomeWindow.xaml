@@ -1,0 +1,91 @@
+﻿<Window x:Class="aBRAINtice.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aBRAINtice"
+        mc:Ignorable="d"
+        Title="WelcomeWindow" Height="600" Width="900" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="WelcomeWindow_MouseDown" x:Name="WelcomeWindowName" Background="#FF6C6C6C">
+
+    <!-- GROSSES GRID / KOMPLETTES FENSTER -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="900"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="565"/>
+        </Grid.RowDefinitions>
+
+        <!-- GRID 1:  TASKLEISTE -->
+        <Grid x:Name="GridTaskLeiste" Background="#FF464646" Grid.Row="0">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="20" Foreground="White" Text="A[Brain]tice"/>
+            <Button x:Name="ButtonExit" Width="25" Height="25" Margin="0,0,10,0" Background="#FF00C763" Click="ButtonExit_Click" HorizontalAlignment="Right" VerticalAlignment="Center" BorderThickness="0">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="❌" FontSize="17" Foreground="White"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <!-- GRID 2: ANZEIGE / ALLES UNTER TASKLEISTE -->
+        <Grid x:Name="Anzeige" Grid.Row="2"  >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="900"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <!-- GRID 2.1: NOTEME-LOGO -->
+            <Grid Grid.Row="0" Background="#FF6C6C6C" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock VerticalAlignment="Center" FontFamily="Tahoma" FontSize="150" Width="93" Foreground="White" Text="A" TextAlignment="Center" TextWrapping="Wrap" Margin="0,60"/>
+                    <TextBlock VerticalAlignment="Center" FontFamily="Tahoma" FontSize="150" Width="455" Foreground="#FF00C763" Text="[Brain]" TextWrapping="Wrap" Margin="0,60"/>
+                    <TextBlock VerticalAlignment="Center" FontFamily="Tahoma" FontSize="150" Width="233" Foreground="White" Text="tice" TextWrapping="Wrap" Margin="0,60"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- GRID 2.2.: TAGESZEIT + NAME / WEITER-BUTTON UND NEUES-KONTO-BUTTON -->
+            <Grid Grid.Row="1" Background="#FF6C6C6C">
+
+                <!-- TAGESZEIT -->
+                <TextBlock x:Name="GrussBlockTageszeit" Height="40" Width="420" HorizontalAlignment="Center" Margin="30,25,450,170" Foreground="White" FontWeight="Bold" FontSize="28" Background="#FF464646" Visibility="Visible" TextAlignment="Right"/>
+
+                <!-- NAME -->
+                <TextBlock x:Name="GrussBlockName" Text="{Binding Path=Vorname}"  Height="40" Width="420" HorizontalAlignment="Center" Margin="450,25,30,170" Foreground="White" FontWeight="Bold" FontSize="28" TextAlignment="Left" Visibility="Visible" Background="#FF464646"/>
+
+                <!-- WEITER-BUTTON -->
+                <Button x:Name="WeiterButton" Height="40" Width="200" Background="#FF00C763" HorizontalAlignment="Center" BorderThickness="0" Margin="350,170,350,25" Click="WeiterButton_Click" Visibility="Visible">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Weiter" FontSize="20" Foreground="White"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="2"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <!-- NEUES-KONTO-BUTTON -->
+                <Button x:Name="NeuesKonto" Height="40" Width="200" Background="#FF00C763" HorizontalAlignment="Center" BorderThickness="0" Margin="350,170,350,25" Click="NeuesKonto_Click" Visibility="Visible">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Neues Konto" FontSize="20" Foreground="White"/>
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="2"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+
+            <!-- GRID 2.3: COPYRIGHT / ERSTELLERIN -->
+            <Grid Grid.Row="2" Background="#FF6C6C6C">
+                <TextBlock Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="©SandraWandzik2022" Foreground="#FF00C763" FontSize="12" Background="#FF6C6C6C" Margin="395,10,385,0"/>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
