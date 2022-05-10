@@ -19,7 +19,7 @@ namespace aBRAINtice
     /// </summary>
     public partial class DeletionBerichtWindow : Window
     {
-        public DeletionBerichtWindow()
+        public DeletionBerichtWindow() 
         {
             InitializeComponent();
         }
