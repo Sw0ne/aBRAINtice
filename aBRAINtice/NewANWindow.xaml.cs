@@ -19,14 +19,37 @@ namespace aBRAINtice
     /// </summary>
     public partial class NewANWindow : Window
     {
-        public NewANWindow()
+        HomeWindow home;
+
+        public NewANWindow(HomeWindow homeWindow)
         {
             InitializeComponent();
+
+            home = homeWindow;
         }
 
         private void ButtonSaveBericht_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ButtonAbbruchBericht_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            home.Show();
         }
     }
 }

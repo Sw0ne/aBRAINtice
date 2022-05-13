@@ -19,24 +19,34 @@ namespace aBRAINtice
     /// </summary>
     public partial class HomeWindow : Window
     {
-        public HomeWindow()
+        WelcomeWindow welcome;
+
+        public HomeWindow() // WelcomeWindow welcomeWindow
         {
+            //welcome = welcomeWindow;
+
             InitializeComponent();
+
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
 
         private void ButtonBerichtNeu_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
+            var newAN = new NewANWindow(this);
+            newAN.Show();
         }
 
         private void ButtonNotizNeu_Click(object sender, RoutedEventArgs e)
@@ -56,22 +66,24 @@ namespace aBRAINtice
 
         private void ButtonDeleteBericht_Click(object sender, RoutedEventArgs e)
         {
-
+            var deletionBericht = new DeletionBerichtWindow(this);
         }
 
         private void ButtonDeleteNotiz_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
-        {
-
+            var deletionNotiz = new DeletionNotizWindow(this);
         }
 
         private void ButtonChangeSpeicherort_Click(object sender, RoutedEventArgs e)
         {
-
+            var changeSpeicherort = new ChangeSpeicherortWindow(this);
         }
+
+        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //this.Close();
+            //welcome.Show();
+        }
+
     }
 }

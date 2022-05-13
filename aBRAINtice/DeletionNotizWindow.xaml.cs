@@ -19,9 +19,16 @@ namespace aBRAINtice
     /// </summary>
     public partial class DeletionNotizWindow : Window
     {
-        public DeletionNotizWindow()
+        HomeWindow home;
+
+        public DeletionNotizWindow(HomeWindow homeWindow)
         {
             InitializeComponent();
+
+            home = homeWindow;
+            this.Owner = home;
+
+            this.ShowDialog().Equals(true);
         }
 
         private void ButtonJaDeleteNotiz_Click(object sender, RoutedEventArgs e)
@@ -36,7 +43,7 @@ namespace aBRAINtice
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

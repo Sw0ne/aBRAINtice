@@ -19,29 +19,38 @@ namespace aBRAINtice
     /// </summary>
     public partial class UserWindow : Window
     {
-        public UserWindow()
+        WelcomeWindow welcome;
+
+        public UserWindow(WelcomeWindow welcomeWindow)
         {
+            welcome = welcomeWindow;
+
             InitializeComponent();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
         }
 
         private void DasBinIchButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            welcome.Show();
         }
 
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            welcome.Show();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
     }
 }

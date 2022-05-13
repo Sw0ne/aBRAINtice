@@ -19,9 +19,16 @@ namespace aBRAINtice
     /// </summary>
     public partial class DeletionBerichtWindow : Window
     {
-        public DeletionBerichtWindow() 
+        HomeWindow home;
+
+        public DeletionBerichtWindow(HomeWindow homeWindow) 
         {
             InitializeComponent();
+
+            home = homeWindow;
+            this.Owner = homeWindow;
+
+            this.ShowDialog().Equals(true);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -41,7 +48,7 @@ namespace aBRAINtice
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
